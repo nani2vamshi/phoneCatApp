@@ -2,7 +2,6 @@ body {
   padding-top: 20px;
 }
 
-
 .phones {
   list-style: none;
 }
@@ -20,3 +19,8 @@ body {
   padding-bottom: 1em;
   width: 100px;
 }
+.container-fluid {
+  font-family: "Georgia";}
+.col-md-2{  color:blue;}
+
+

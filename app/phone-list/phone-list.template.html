@@ -1,29 +1,36 @@
-
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-2">
-			<p>Search : <input ng-model="$ctrl.query"></p>
-			<p> Sort By: 
-				<select ng-model="$ctrl.order"> 
-					<option value="name"> Alphabetical Order</option>
-					<option value="age"> Newest</option>
-					<option value="-age">Oldest</option></select></p>
-				</div>
-				<div class="col-md-10">
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
 
-					<ul class="phones">
-						<li ng-repeat="phone in $ctrl.phones | filter: $ctrl.query | orderBy : $ctrl.order" class="thumbnail">
+      <p>
+        Search:
+        <input ng-model="$ctrl.query" />
+      </p>
 
-						<a href="#/phones/{{phone.id}}" class="thumb">
-							<img ng-src="{{phone.imageUrl}}"></a>
-							
-						<a href="#/phones/{{phone.id}}">
-							{{phone.name}}</a>
-							<p>{{phone.snippet}}</p>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
+      <p>
+        Sort by:
+        <select ng-model="$ctrl.orderProp">
+          <option value="name">Alphabetical</option>
+          <option value="age">Newest</option>
+          <option value="-age">Oldest</option>
+        </select>
+      </p>
 
-		<!-- we are adding filters to the program. We are going to add a search box here -->
+    </div>
+    <div class="col-md-10">
+      <!--Body content-->
+
+      <ul class="phones">
+        <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp" class="thumbnail">
+          <a href="#!/phones/{{phone.id}}" class="thumb">
+            <img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}" />
+          </a>
+          <a href="#!/phones/{{phone.id}}">{{phone.name}}</a>
+          <p>{{phone.snippet}}</p>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
