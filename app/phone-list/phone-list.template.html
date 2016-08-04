@@ -2,17 +2,22 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-2">
-			Search : <input ng-model="$ctrl.query">
-		</div>
-		<div class="col-md-10">
+			<p>Search : <input ng-model="$ctrl.query"></p>
+			<p> Sort By: 
+				<select ng-model="$ctrl.order"> 
+					<option value="name"> Alphabetical Order</option>
+					<option value="age"> Newest</option>
+					<option value="-age">Oldest</option></select></p>
+				</div>
+				<div class="col-md-10">
 
-			<ul>
-				<li ng-repeat="phone in $ctrl.phones | filter: $ctrl.query">
-					<span>{{phone.name}}</span>
-					<p>{{phone.snippet}}</p>
-				</li>
-			</ul>
+					<ul>
+						<li ng-repeat="phone in $ctrl.phones | filter: $ctrl.query | orderBy : $ctrl.order">
+							<span><b>{{phone.name}}</b></span>
+							<p>{{phone.snippet}}</p>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
-<!-- we are adding filters to the program. We are going to add a search box here -->
+		<!-- we are adding filters to the program. We are going to add a search box here -->
