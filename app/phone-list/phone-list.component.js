@@ -1,27 +1,15 @@
-'use strict';
 
-// Register `phoneList` component, along with its associated controller and template
+
 angular.
   module('phoneList').
   component('phoneList', {
     templateUrl: 'phone-list/phone-list.template.html',
-    controller: function PhoneListController() {
-      this.phones = [
-        {
-          name: 'Nexus S',
-          snippet: 'Fast just got faster with Nexus S.',
-          age :1
-        }, {
-          name: 'Motorola XOOM™ with Wi-Fi',
-          snippet: 'The Next, Next Generation tablet.',
-          age:2
-        }, {
-          name: 'MOTOROLA XOOM™',
-          snippet: 'The Next, Next Generation tablet.',
-          age:3
-        }
-      ];
-     this.order = 'age'; // initializing the ordering parameter to age. If not used, the default 
-     //ordering will be natural order as used in the controller.
+    controller: function PhoneListController($http) {
+     
+      var controller = this;
+      controller.order = "age";
+      $http.get('phones/phones.json').success(function(response){
+      		controller.phones = response;// use .slice(0,5) method to slice the data to the required output. here only first 5 phones ... (0,5)
+      });
     }
   });
